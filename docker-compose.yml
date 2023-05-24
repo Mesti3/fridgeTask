@@ -1,0 +1,32 @@
+version: '2.2'
+services:
+  web:
+    restart: always
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+    links:
+      - "db:database"
+    environment:
+      - PORT=9000
+      - NODE_ENV=production
+      - SERVER_IP=127.0.0.1
+      - PGHOST=127.0.0.1
+      - PGDATABASE=postrgeSQL
+      - PGUSER=postgres
+      - PGPASSWORD='123456'
+      
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: '123456'
+      POSTGRES_DB: postrgeSQL
+    volumes:
+       - /var/lib/postgresql/data
+  

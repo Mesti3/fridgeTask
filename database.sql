@@ -10,11 +10,12 @@ CREATE TABLE "user"(
 );
 
 CREATE TABLE fridge(
-    id number NOT NULL,
+    id integer NOT NULL,
     serialNumber varchar(100) NOT NULL,
     "type" varchar(100),
     working bool NOT NULL,
-    CONSTRAINT id PRIMARY KEY(id)  
+    CONSTRAINT id PRIMARY KEY(id),
+    email varchar(100) NOT NULL
 );
 
 ALTER TABLE fridge
